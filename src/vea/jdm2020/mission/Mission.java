@@ -27,6 +27,7 @@ public class Mission {
         this.XP_Reward = XP_Reward;
         this.gold_Reward = gold_Reward;
         this.player = player;
+        this.player.addMission(this);
     }
 
     public int getRequiredLevel() {
@@ -70,6 +71,7 @@ public class Mission {
         }
     }
 
+    // TODO Add a random chance that the player can receive a gun as a reward
     public void missionInfo() {
         System.out.println("----- Mission Info ----- \n" +
                 "necessary soldiers:" + "\n" +
@@ -106,5 +108,7 @@ public class Mission {
                 soldier.gainedExp(XP_Reward/20);
             }
         }
+
+        player.removeMission(this);
     }
 }

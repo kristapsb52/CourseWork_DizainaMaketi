@@ -4,6 +4,7 @@ import vea.jdm2020.mission.Mission;
 import vea.jdm2020.player.Player;
 import vea.jdm2020.soldier.Soldier;
 import vea.jdm2020.soldier.SoldierFactory;
+import vea.jdm2020.vehicle.VehicleParts;
 
 import java.util.ArrayList;
 
@@ -48,6 +49,39 @@ public class Main {
         soldier2.getInfo();
         soldier3.getInfo();
         soldier4.getInfo();
+
+        System.out.println("========= Players info =========");
+        System.out.println("Gold: " + player.getGold());
+
+        // Creating a vehicle with 6 total parts and the main part
+        VehicleParts vehicle = new VehicleParts("Tank", 2000, player);
+
+        //
+        VehicleParts body = new VehicleParts("Body", 1000, player);
+        VehicleParts wheels = new VehicleParts("Wheels", 1500, player);
+
+        vehicle.addPart(body);
+        vehicle.addPart(wheels);
+        
+        //
+        VehicleParts gun = new VehicleParts("Gun", 600, player);
+        VehicleParts radio = new VehicleParts("Radio", 300, player);
+        VehicleParts suspension = new VehicleParts("Suspension", 400, player);
+        VehicleParts engine = new VehicleParts("Engine", 800, player);
+        
+        body.addPart(gun);
+        body.addPart(radio);
+        wheels.addPart(suspension);
+        wheels.addPart(engine);
+
+        radio.buying(player.getGold());
+        System.out.println(vehicle.toString());
+        for (VehicleParts headParts:vehicle.getParts()) {
+            System.out.println(headParts.toString());
+            for (VehicleParts lesserParts:headParts.getParts()) {
+                System.out.println(lesserParts.toString());
+            }
+        }
 
         System.out.println("========= Players info =========");
         System.out.println("Gold: " + player.getGold());

@@ -172,4 +172,8 @@ public class Player {
         this.gold += gold;
     }
 
+    public void subtractGold(int gold) {
+        this.gold -= gold;
+    }
+
 }

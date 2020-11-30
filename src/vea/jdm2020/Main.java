@@ -28,7 +28,7 @@ public class Main {
 
         // Squad requirements {Medics, Pilots, Spies, Snipers}
         int[] necessarySoldiers = {0, 1, 0, 1};
-        Mission mission1 = new Mission(necessarySoldiers, 50, 1200);
+        Mission mission1 = new Mission(necessarySoldiers, 1, 1200, 500, player);
         mission1.missionInfo();
 
         // Player is creating a squad for the mission
@@ -36,18 +36,20 @@ public class Main {
         squad1.add(player.getMedics().get(0));
 
         //Player is assigning a squad that doesn't match the requirements
-        mission1.assignSquad(squad1);
+        mission1.startMission(squad1);
         squad1.remove(player.getMedics().get(0));
 
         //Player is making a squad that does match the requirements
         squad1.add(player.getPilots().get(0));
         squad1.add(player.getSnipers().get(0));
-        mission1.assignSquad(squad1);
+        mission1.startMission(squad1);
         mission1.missionInfo();
-        mission1.completeMission(squad1);
         soldier1.getInfo();
         soldier2.getInfo();
         soldier3.getInfo();
         soldier4.getInfo();
+
+        System.out.println("========= Players info =========");
+        System.out.println("Gold: " + player.getGold());
     }
 }

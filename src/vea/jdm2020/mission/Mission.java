@@ -4,6 +4,7 @@ import vea.jdm2020.mission.states.CompletedState;
 import vea.jdm2020.mission.states.MissionState;
 import vea.jdm2020.mission.states.ReadyState;
 import vea.jdm2020.mission.states.StartState;
+import vea.jdm2020.player.Player;
 import vea.jdm2020.soldier.Soldier;
 
 import java.util.ArrayList;
@@ -14,15 +15,18 @@ public class Mission {
     private int[] necessarySoldierTypes;
     private int requiredLevel;
     private int XP_Reward;
-    // TODO Loot
+    private int gold_Reward;
     private double chance;
     private MissionState missionState;
+    private Player player;
 
-    public Mission(int[] necessarySoldierTypes, int requiredLevel, int XP_Reward) {
+    public Mission(int[] necessarySoldierTypes, int requiredLevel, int XP_Reward, int gold_Reward, Player player) {
         this.necessarySoldierTypes = necessarySoldierTypes;
         this.requiredLevel = requiredLevel;
         this.missionState = new ReadyState();
         this.XP_Reward = XP_Reward;
+        this.gold_Reward = gold_Reward;
+        this.player = player;
     }
 
     public int getRequiredLevel() {
@@ -42,7 +46,7 @@ public class Mission {
     }
 
 
-    public void assignSquad(ArrayList<Soldier> missionSoldiers) {
+    public void startMission(ArrayList<Soldier> missionSoldiers) {
         int[] tempSoldiers = {0, 0, 0, 0};
         for (Soldier soldier: missionSoldiers) {
             if (soldier.getSoldierType() == "Medic") {
@@ -60,6 +64,7 @@ public class Mission {
             MissionState startState = new StartState();
             // TODO set soldier isOnMission to true
             startState.doMission(this);
+            completeMission(missionSoldiers);
         } else {
             System.out.println("Created squad does not meet the requirements \n");
         }
@@ -84,16 +89,18 @@ public class Mission {
         return this.missionState;
     }
 
-    public void completeMission(ArrayList<Soldier> missionSoldiers) {
+    private void completeMission(ArrayList<Soldier> missionSoldiers) {
         Random rand = new Random();
         MissionState missionState = new CompletedState();
         missionState.doMission(this);
         if (chance > rand.nextDouble() * 100) {
             System.out.println("Mission was succesful");
+            player.addGold(gold_Reward);
             for (Soldier soldier : missionSoldiers) {
                 soldier.gainedExp(XP_Reward);
             }
         } else {
+            // Since mission was not succesful player does not receive any gold
             System.out.println("Mission was not succesful");
             for (Soldier soldier : missionSoldiers) {
                 soldier.gainedExp(XP_Reward/20);

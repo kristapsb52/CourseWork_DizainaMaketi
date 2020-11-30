@@ -1,8 +1,10 @@
 package vea.jdm2020.player;
 
+import vea.jdm2020.mission.Mission;
 import vea.jdm2020.soldier.Soldier;
 import vea.jdm2020.weapon.Weapon;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +22,15 @@ public class Player {
     private ArrayList<Weapon> pistolInv;
     private ArrayList<Weapon> shotgunInv;
 
+    // Squad of soldiers
+    private ArrayList<Soldier> soldierSquad;
+
+    // List of missions
+    private ArrayList<Mission> availableMissions;
+
+    // Players amount of gold
+    private int gold;
+
     public Player() {
         medics = new ArrayList<>();
         pilots = new ArrayList<>();
@@ -30,6 +41,11 @@ public class Player {
         sniperInv = new ArrayList<>();
         pistolInv = new ArrayList<>();
         shotgunInv = new ArrayList<>();
+
+        soldierSquad = new ArrayList<>();
+        availableMissions = new ArrayList<>();
+
+        gold = 0;
     }
 
     // Adds soldiers to list
@@ -122,6 +138,38 @@ public class Player {
 
     public List<Weapon> getShotgunInv() {
         return shotgunInv;
+    }
+
+    public void addSquadMember(Soldier soldier){
+        soldierSquad.add(soldier);
+    }
+
+    public void removeSquadMember(Soldier soldier) {
+        soldierSquad.remove(soldier);
+    }
+
+    public void addMission(Mission mission) {
+        availableMissions.add(mission);
+    }
+
+    public void removeMission(Mission mission) {
+        availableMissions.remove(mission);
+    }
+
+    public List<Mission> getAvailableMissions() {
+        return availableMissions;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+
+    public int getGold() {
+        return this.gold;
+    }
+
+    public void addGold(int gold) {
+        this.gold += gold;
     }
 
 }

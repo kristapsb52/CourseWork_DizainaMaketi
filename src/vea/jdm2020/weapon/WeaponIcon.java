@@ -14,11 +14,6 @@ public class WeaponIcon extends WeaponDecorator{
     }
 
     @Override
-    public void addAttachment() {
-
-    }
-
-    @Override
     public String weaponInfo() {
         return icon();
     }

@@ -63,7 +63,6 @@ public class Mission {
         if (Arrays.equals(tempSoldiers, necessarySoldierTypes)) {
             calculateChance(missionSoldiers);
             MissionState startState = new StartState();
-            // TODO set soldier isOnMission to true
             startState.doMission(this);
             completeMission(missionSoldiers);
         } else {
@@ -71,7 +70,6 @@ public class Mission {
         }
     }
 
-    // TODO Add a random chance that the player can receive a gun as a reward
     public void missionInfo() {
         System.out.println("----- Mission Info ----- \n" +
                 "necessary soldiers:" + "\n" +

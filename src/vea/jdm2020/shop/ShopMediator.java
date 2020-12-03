@@ -17,19 +17,24 @@ public class ShopMediator {
     }
 
     public void sellItem(Player player, Weapon weapon){
-        player.addGold(weapon.price());
-        if (weapon.getClass() == AssaultRifle.class) {
-            player.getARInv().remove(weapon);
-        }
-        else if (weapon.getClass() == Pistol.class) {
-            player.getPistolInv().remove(weapon);
-            System.out.println("Item has been sold");
-        }
-        else if (weapon.getClass() == Shotgun.class) {
-            player.getShotgunInv().remove(weapon);
-        }
-        else if (weapon.getClass() == SniperRifle.class) {
-            player.getSniperInv().remove(weapon);
+        if (weapon != null) {
+            try {
+                player.addGold(weapon.price());
+                if (weapon.getClass() == AssaultRifle.class) {
+                    player.getARInv().remove(weapon);
+                } else if (weapon.getClass() == Pistol.class) {
+                    player.getPistolInv().remove(weapon);
+                } else if (weapon.getClass() == Shotgun.class) {
+                    player.getShotgunInv().remove(weapon);
+                } else if (weapon.getClass() == SniperRifle.class) {
+                    player.getSniperInv().remove(weapon);
+                }
+                System.out.println("Item has been sold");
+            } catch (Exception e) {
+                System.out.println("The item is not in your inventory!");
+            }
+        } else {
+            System.out.println("Can't sell null");
         }
     }
 

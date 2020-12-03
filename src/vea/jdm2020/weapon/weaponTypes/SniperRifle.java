@@ -20,11 +20,6 @@ public class SniperRifle implements Weapon {
     }
 
     @Override
-    public void addAttachment() {
-
-    }
-
-    @Override
     public String weaponInfo() {
         return sniperRifle;
     }

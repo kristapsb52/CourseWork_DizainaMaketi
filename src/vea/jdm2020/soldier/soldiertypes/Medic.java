@@ -17,11 +17,6 @@ public class Medic extends SoldierData implements Soldier {
     }
 
     @Override
-    public boolean isOnMission() {
-        return false;
-    }
-
-    @Override
     public void gainedExp(int experience) {
         int exp = getExp();
         int experienceToLevelUp = getExpToLevelUp();
@@ -38,16 +33,6 @@ public class Medic extends SoldierData implements Soldier {
     public void levelUp() {
         System.out.println("Level up!");
         setLvl(getLevel()+1);
-    }
-
-    @Override
-    public void changeWeapon() {
-
-    }
-
-    @Override
-    public void changeItems() {
-
     }
 
     @Override

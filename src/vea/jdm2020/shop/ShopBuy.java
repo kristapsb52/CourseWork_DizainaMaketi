@@ -18,10 +18,6 @@ public class ShopBuy {
         availableWeapons = new ArrayList<>();
     }
 
-    public ShopBuy() {
-        availableWeapons = new ArrayList<>();
-    }
-
     public void buyWeapon(int choice) {
         Weapon weapon = availableWeapons.get(choice);
         mediator.buyItem(player, weapon);

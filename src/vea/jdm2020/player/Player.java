@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
+    private static Player instance = new Player();
+
     // Lists of all the soldier types
     private ArrayList<Soldier> medics;
     private ArrayList<Soldier> pilots;
@@ -30,7 +32,7 @@ public class Player {
     // Players amount of gold
     private int gold;
 
-    public Player() {
+    private Player() {
         medics = new ArrayList<>();
         pilots = new ArrayList<>();
         spies = new ArrayList<>();
@@ -45,6 +47,10 @@ public class Player {
         availableMissions = new ArrayList<>();
 
         gold = 0;
+    }
+
+    public static Player getInstance() {
+        return instance;
     }
 
     // Adds soldiers to list

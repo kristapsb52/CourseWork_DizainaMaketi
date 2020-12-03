@@ -21,11 +21,6 @@ public class Shotgun implements Weapon {
     }
 
     @Override
-    public void addAttachment() {
-
-    }
-
-    @Override
     public String weaponInfo() {
         return shotgun;
     }

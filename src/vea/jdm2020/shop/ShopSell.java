@@ -13,10 +13,6 @@ public class ShopSell {
         mediator = new ShopMediator(null);
     }
 
-    public ShopSell() {
-
-    }
-
     public void sellItem(Weapon weapon) {
         mediator.sellItem(this.player, weapon);
     }

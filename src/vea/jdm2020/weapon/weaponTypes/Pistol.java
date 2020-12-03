@@ -20,12 +20,6 @@ public class Pistol implements Weapon {
         createPistol();
     }
 
-
-    @Override
-    public void addAttachment() {
-
-    }
-
     @Override
     public String weaponInfo() {
         return pistol;

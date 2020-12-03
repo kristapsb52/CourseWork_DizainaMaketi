@@ -26,7 +26,7 @@ public class Main {
         Soldier soldier4 = factory.createSoldier("sniper");
         soldier4.getInfo();
 
-        Player player = new Player();
+        Player player = Player.getInstance();
         player.addMedic(soldier1);
         player.addPilots(soldier2);
         player.addSpy(soldier3);

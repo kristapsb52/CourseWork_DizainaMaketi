@@ -7,6 +7,8 @@ import java.util.Random;
 public class Pistol implements Weapon {
 
     private String pistol;
+    private int price = 500;
+
     private void createPistol() {
         String[] listOfNames = {"USP .45", ".44 MAGNUM", "M9", "DESERT EAGLE"};
         Random rand = new Random();
@@ -32,5 +34,10 @@ public class Pistol implements Weapon {
     @Override
     public String weaponType() {
         return "Pistol";
+    }
+
+    @Override
+    public int price() {
+        return price;
     }
 }

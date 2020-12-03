@@ -6,6 +6,8 @@ import java.util.Random;
 
 public class SniperRifle implements Weapon {
     private String sniperRifle;
+    private int price = 2000;
+
     public void createSniperRifle() {
         String[] listOfNames = {"Intervention", "BARRETT .50CAL", "WA2000", "M21 EBR"};
         Random rand = new Random();
@@ -30,5 +32,10 @@ public class SniperRifle implements Weapon {
     @Override
     public String weaponType() {
         return "Sniper Rifle";
+    }
+
+    @Override
+    public int price() {
+        return price;
     }
 }

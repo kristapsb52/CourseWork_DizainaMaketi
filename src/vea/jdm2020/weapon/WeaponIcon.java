@@ -28,6 +28,11 @@ public class WeaponIcon extends WeaponDecorator{
         return null;
     }
 
+    @Override
+    public int price() {
+        return this.weapon.price();
+    }
+
     public String icon() {
         if (this.weapon.getClass() == AssaultRifle.class) {
             return  "\n" +

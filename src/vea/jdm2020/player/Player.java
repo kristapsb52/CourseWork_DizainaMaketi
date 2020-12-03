@@ -8,7 +8,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO Add money to the player class
 public class Player {
     // Lists of all the soldier types
     private ArrayList<Soldier> medics;

@@ -2,11 +2,16 @@ package vea.jdm2020;
 
 import vea.jdm2020.mission.Mission;
 import vea.jdm2020.player.Player;
+import vea.jdm2020.shop.ShopBuy;
+import vea.jdm2020.shop.ShopSell;
 import vea.jdm2020.soldier.Soldier;
 import vea.jdm2020.soldier.SoldierFactory;
 import vea.jdm2020.vehicle.VehicleParts;
+import vea.jdm2020.weapon.Weapon;
+import vea.jdm2020.weapon.weaponTypes.Pistol;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
 
@@ -85,5 +90,20 @@ public class Main {
 
         System.out.println("========= Players info =========");
         System.out.println("Gold: " + player.getGold());
+        player.addGold(1000);
+
+        ShopBuy shopBuy = new ShopBuy(player);
+        ShopSell shopSell = new ShopSell(player);
+        Weapon randomPistol = new Pistol();
+        shopBuy.addWeaponToShop(randomPistol);
+        shopBuy.buyWeapon(0);
+        System.out.println("========= Players info =========");
+        System.out.println("Gold: " + player.getGold());
+
+        shopSell.sellItem(player.getPistolInv().get(0));
+
+        System.out.println("========= Players info =========");
+        System.out.println("Gold: " + player.getGold());
+
     }
 }

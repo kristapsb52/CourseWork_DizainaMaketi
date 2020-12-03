@@ -4,4 +4,5 @@ public interface Weapon {
     public void addAttachment();
     public String weaponInfo();
     public String weaponType();
+    public int price();
 }

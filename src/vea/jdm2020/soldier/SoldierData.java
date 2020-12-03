@@ -7,7 +7,6 @@ import vea.jdm2020.weapon.WeaponIcon;
 import javax.naming.Name;
 import java.util.Random;
 
-// TODO add random names from enums to each soldier on creation
 public class SoldierData {
     private int exp = 0;
     private int lvl = 1;

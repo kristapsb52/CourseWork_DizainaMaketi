@@ -55,22 +55,25 @@ public class Main {
         soldier3.getInfo();
         soldier4.getInfo();
 
+
         System.out.println("========= Players info =========");
         System.out.println("Gold: " + player.getGold());
 
         // Creating a vehicle with 6 total parts and the main part
         VehicleParts vehicle = new VehicleParts("Tank", 2000, player);
 
-        //
+        // Creating Body and Wheel childs for the tank
         VehicleParts body = new VehicleParts("Body", 1000, player);
         VehicleParts wheels = new VehicleParts("Wheels", 1500, player);
 
         vehicle.addPart(body);
         vehicle.addPart(wheels);
         
-        //
+        // Creating Gun and Radio child for the Body
         VehicleParts gun = new VehicleParts("Gun", 600, player);
         VehicleParts radio = new VehicleParts("Radio", 300, player);
+
+        // Creating Suspension and Engine child for the Wheels
         VehicleParts suspension = new VehicleParts("Suspension", 400, player);
         VehicleParts engine = new VehicleParts("Engine", 800, player);
         
@@ -79,7 +82,10 @@ public class Main {
         wheels.addPart(suspension);
         wheels.addPart(engine);
 
+        // Player buys the radio child
         radio.buying(player.getGold());
+
+        // Prints out all children of tank, radio's has been bought should be equal to true
         System.out.println(vehicle.toString());
         for (VehicleParts headParts:vehicle.getParts()) {
             System.out.println(headParts.toString());
@@ -88,21 +94,31 @@ public class Main {
             }
         }
 
+        // Gives the player 1000 gold
         System.out.println("========= Players info =========");
-        System.out.println("Gold: " + player.getGold());
         player.addGold(1000);
+        System.out.println("Gold: " + player.getGold());
 
+        // Adds a pistol to the shop so the player can buy it
         ShopBuy shopBuy = new ShopBuy(player);
         ShopSell shopSell = new ShopSell(player);
         Weapon randomPistol = new Pistol();
         shopBuy.addWeaponToShop(randomPistol);
         shopBuy.buyWeapon(0);
+
+        // Shows that the player has a pistol in its inventory
         System.out.println("========= Players info =========");
+        System.out.println("Weapon: " + player.getPistolInv().get(0).weaponInfo());
         System.out.println("Gold: " + player.getGold());
 
+        // Player sells the pistol
         shopSell.sellItem(player.getPistolInv().get(0));
-
         System.out.println("========= Players info =========");
+        try {
+            System.out.println("Weapon: " + player.getPistolInv().get(0).weaponInfo());
+        } catch(Exception e) {
+            System.out.println("Player doesn't have a pistol in its inventory");
+        }
         System.out.println("Gold: " + player.getGold());
 
     }

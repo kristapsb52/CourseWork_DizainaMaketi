@@ -43,14 +43,11 @@ public class ShopMediator {
             player.subtractGold(weapon.price());
             if (weapon.getClass() == AssaultRifle.class) {
                 player.addAR(weapon);
-            }
-            else if (weapon.getClass() == Pistol.class) {
+            } else if (weapon.getClass() == Pistol.class) {
                 player.addPistol(weapon);
-            }
-            else if (weapon.getClass() == Shotgun.class) {
+            } else if (weapon.getClass() == Shotgun.class) {
                 player.addShotgun(weapon);
-            }
-            else if (weapon.getClass() == SniperRifle.class) {
+            } else if (weapon.getClass() == SniperRifle.class) {
                 player.addSniper(weapon);
             }
             shopBuy.getAvailableWeapons().remove(weapon);
@@ -62,6 +59,5 @@ public class ShopMediator {
 
     public void addWeaponToShop(Weapon weapon) {
         shopBuy.getAvailableWeapons().add(weapon);
-        System.out.println(shopBuy.getAvailableWeapons());
     }
 }
